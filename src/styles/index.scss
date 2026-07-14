@@ -1,0 +1,112 @@
+@use "./variables" as *;
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+} 
+
+body {
+	font-family: var(--font-poppins);
+	background: linear-gradient(70deg,rgba(158, 211, 219, 1) 0%, rgba(226, 185, 219, 1) 100%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+	font-family: var(--font-agbalumo);
+	color: $primaire;
+}
+
+h1 {
+	@include divider;
+	font-size: 42px;
+	line-height: 50px;
+}
+
+h2 {
+	font-size: 42px;
+	line-height: 50px;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	display: flex;
+	margin: auto;
+	height: 200px;
+}
+
+section {
+	margin-top: 50px;
+	padding: 20px;
+}
+
+.wrapper, dialog {
+	@include flex(column, 20px);
+	padding: 30px;
+	background-color: $white;
+	border-radius: 30px;
+}
+
+dialog {
+	@include flex(column, 20px);
+	border: none;
+	margin: auto;
+	width: 100%;
+
+	&::backdrop {
+        background: rgba($black, 0.5);
+    }
+
+	h2 {
+		@include divider;
+		@include flex(column, 0px);
+	}
+}
+
+.buttons {
+	@include flex(column, 20px);
+}
+
+.button-1 {
+	@include button1;
+}
+
+.button-2 {
+	@include button1;
+	background-color: $white;
+	color: $primaire;
+}
+
+a.button-1 {
+	display: block;
+	text-align: center;
+}
+
+.back-btn {
+	position: relative;
+	aspect-ratio: 1/1;
+	width: 50px;
+	margin-top: 20px;
+	background-color: $white;
+	border: none;
+	border-radius: 50%;
+
+	&:before {
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		background-image: url("/img/svg/arrow.svg");
+		width: 24px;
+		aspect-ratio: 1/1;
+	}
+}
+
+.active {
+	display: block !important;
+}
