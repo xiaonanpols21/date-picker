@@ -1,7 +1,13 @@
 @use "../../styles/variables" as *;
 
 .step4 {
-    h2 {
-        
+    @include flex(column, 20px);
+
+    h2::after {
+        display: none;
+    }
+
+    h3 {
+        @include f26;
     }
 }

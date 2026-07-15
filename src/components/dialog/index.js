@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
 import styles from "./styles.module.scss";
 
-export default function Dialog() {
+export default function Dialog({toggleDialog}) {
     const dialogRef = useRef(null);
     const [step, setStep] = useState(1);
-    const router = useRouter();
 
     useEffect(() => {
         if (dialogRef.current) {
@@ -16,6 +14,12 @@ export default function Dialog() {
     function handleYes() {
         if (step < 4) {
             setStep(prev => prev + 1);
+        }
+    }
+
+    function closeModal() {
+        if (dialogRef.current) {
+            dialogRef.current.close();
         }
     }
 
@@ -56,8 +60,8 @@ export default function Dialog() {
                 )}
                 
                 <div className="buttons">
-                    <button onClick={handleYes} className="button-1">Yes</button>
-                    {step !== 3 && (<button className="button-2">No</button>)}
+                    {step === 4 ? <a className="button-1" href="/form">Continue 🤍</a> : <button onClick={handleYes} className="button-1">Yes</button>}
+                    {step !== 3 && step !== 4 && (<button onClick={toggleDialog} className="button-2">No</button>)}
                 </div>
             </dialog> 
         </>

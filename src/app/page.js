@@ -11,7 +11,7 @@ export default function Home() {
         setIsActive(prev => !prev);
     }
 
-    function openDialog() {
+    function toggleDialog() {
         setShowDialog(prev => !prev);
     }
 
@@ -24,7 +24,7 @@ export default function Home() {
                         <img src="/img/gif/start.gif" alt="Bubu dancing gif"/>
                         <div className="buttons">
                             <button onClick={toggle} className="button-1">Yes</button>
-                            <button onClick={openDialog} className="button-2">No</button>
+                            <button onClick={toggleDialog} className="button-2">No</button>
                         </div>
                     </div>
                 </section>
@@ -44,7 +44,7 @@ export default function Home() {
                 </section>
             )}
 
-            {showDialog && <Dialog/>}
+            {showDialog && <Dialog toggleDialog={toggleDialog}/>}
       
         </>
     );
