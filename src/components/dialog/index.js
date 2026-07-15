@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import styles from "./styles.module.scss";
 
 export default function Dialog({toggleDialog}) {
@@ -29,21 +30,36 @@ export default function Dialog({toggleDialog}) {
                 {step === 1 && (
                     <>
                         <h2>You sure? <span>🥺</span></h2>
-                        <img src="/img/gif/no-1.gif" alt="Bubu crying"/>
+                        <Image
+                            src="/img/gif/no-1.gif"
+                            width={200}
+                            height={200}
+                            alt="Bubu crying"
+                        />
                     </>
                 )}
 
                 {step === 2 && (
                     <>
                         <h2>You really sure?</h2>
-                        <img src="/img/gif/no-2.gif" alt="Bubu crying on table"/>
+                        <Image
+                            src="/img/gif/no-2.gif"
+                            width={200}
+                            height={200}
+                            alt="Bubu crying on table"
+                        />
                     </>
                 )}
 
                 {step === 3 && (
                     <>
                         <h2>Just go out with me!</h2>
-                        <img src="/img/gif/no-3.gif" alt="Bubu waling"/>
+                        <Image
+                            src="/img/gif/no-3.gif"
+                            width={200}
+                            height={200}
+                            alt="Bubu walinge"
+                        />
                     </>
                 )}
 
@@ -55,7 +71,12 @@ export default function Dialog({toggleDialog}) {
                             <p>(After asking 3 times 😡)</p>
                         </div>
                         <h3>We gonna have so much fun!</h3>
-                        <img src="/img/gif/yay.gif" alt="Bubu and Dudu horse riding with music on"/>
+                        <Image
+                            src="/img/gif/yay.gif"
+                            width={200}
+                            height={200}
+                            alt="Bubu and Dudu horse riding with music on"
+                        />
                     </div>
                 )}
                 

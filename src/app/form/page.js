@@ -1,5 +1,11 @@
+import styles from "./styles.module.scss";
+
 export default function Form() {
     return (
-        <h1>Form</h1>
+        <form className={`${styles.form}`}>
+            <fieldset>
+                <legend>Pick a date and time!</legend>
+            </fieldset>
+        </form>
     )
 }

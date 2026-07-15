@@ -1,6 +1,7 @@
 'use client';
 import { useState } from "react";
 import Dialog from "@/components/dialog";
+import Image from "next/image";
 import styles from "./page.module.scss";
 
 export default function Home() {
@@ -21,7 +22,12 @@ export default function Home() {
                 <section>
                     <div className="wrapper">
                         <h1>Will you go out with me?</h1>
-                        <img src="/img/gif/start.gif" alt="Bubu dancing gif"/>
+                        <Image
+                            src="/img/gif/start.gif"
+                            width={200}
+                            height={200}
+                            alt="Bubu dancing gif"
+                        />
                         <div className="buttons">
                             <button onClick={toggle} className="button-1">Yes</button>
                             <button onClick={toggleDialog} className="button-2">No</button>
@@ -37,7 +43,12 @@ export default function Home() {
                             <p>(After asking 3 times 😡)</p>
                         </div>
                         <h3>We gonna have so much fun!</h3>
-                        <img src="/img/gif/yay.gif" alt="Bubu and Dudu horse riding with music on"/>
+                        <Image
+                            src="/img/gif/yay.gif"
+                            width={200}
+                            height={200}
+                            alt="Bubu and Dudu horse riding with music on"
+                        />
                         <a className="button-1" href="/form">Continue 🤍</a>
                     </div>
                     <button onClick={toggle} className="back-btn"></button>

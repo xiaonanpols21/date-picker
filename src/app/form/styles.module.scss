@@ -1,0 +1,9 @@
+@use "../../styles/variables" as *;
+
+.form {
+    fieldset {
+        padding: 30px;
+        background-color: $white;
+        border-radius: 30px;
+    }
+}
