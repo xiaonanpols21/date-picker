@@ -1,9 +1,81 @@
 @use "../../styles/variables" as *;
 
-.form {
-    fieldset {
-        padding: 30px;
-        background-color: $white;
-        border-radius: 30px;
+.main {
+    padding: 70px 20px 20px 20px;
+
+    form {
+        fieldset {
+            border: none;
+
+            legend {
+                margin-bottom: 60px;
+            }
+        }
+
+        .date {
+            @include flex(column, 50px);
+
+            label {
+                @include flex(column, 10px);
+                @include f24;
+                font-weight: bold;
+
+                input {
+                    padding: 16px;
+                    border-radius: 20px;
+                    border: 2px solid $primaire;
+                    font-family: var(--font-poppins);
+                    text-align: center;
+                }
+            }
+        }
+
+        .activity {
+            @include flex(flex, 10px);
+            flex-wrap: wrap;
+
+            label {
+                @include tags;
+
+                &:has(input:checked) {
+                    border: 3px solid $primaire;
+                    font-weight: bold;
+                }
+
+                input {
+                    opacity: 0;
+                    position: absolute;
+                }
+            }
+        }
+
+
+        .button1 {
+            margin-top: 40px;
+        }
+
+        .myOwn {
+            @include flex(column, 10px);
+
+            legend {
+                @include f24;
+                margin: 0px 0px 10px 0px;
+                font-weight: bold;
+                font-family: var(--font-poppins);
+                color: $black;
+                text-align: left;
+
+                &::after {
+                    display: none
+                }
+            }
+
+            button {
+                @include tags;
+                @include f16;
+                width: 100%;
+                font-family: var(--font-poppins);
+            }
+        }
     }
 }

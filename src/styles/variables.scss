@@ -7,6 +7,11 @@ $black: #000;
     line-height: 23px;
 }
 
+@mixin f16 {
+    font-size: 16px;
+    line-height: 28px;
+}
+
 @mixin f18 {
     font-size: 18px;
     line-height: 30px;
@@ -15,6 +20,11 @@ $black: #000;
 @mixin f20 {
     font-size: 20px;
     line-height: 33px;
+}
+
+@mixin f24 {
+    font-size: 24px;
+    line-height: 40px;
 }
 
 @mixin f26 {
@@ -51,4 +61,12 @@ $black: #000;
 		right: 0;
 		bottom: -20px;
 	}
+}
+
+@mixin tags {
+    width: fit-content;
+    padding: 10px 20px;
+    border: 1px solid $primaire;
+    border-radius: 10px;
+    background-color: $white;
 }
