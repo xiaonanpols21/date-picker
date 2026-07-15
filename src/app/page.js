@@ -32,7 +32,7 @@ export default function Home() {
                 <section className={styles.yay}>
                     <div className="wrapper">
                         <h2>Yay!</h2>
-                        <div className={styles.titleContent}>
+                        <div className="title-content">
                             <p>I'm glad you said yes!</p>
                             <p>(After asking 3 times 😡)</p>
                         </div>

@@ -67,6 +67,22 @@ dialog {
 	}
 }
 
+.title-content {
+    @include divider;
+    margin-top: -10px;
+    text-align: center;
+
+    p {
+        &:first-of-type {
+            @include f20;
+        }
+
+        &:last-of-type {
+            @include f14;
+        }
+    }
+}
+
 .buttons {
 	@include flex(column, 20px);
 }
