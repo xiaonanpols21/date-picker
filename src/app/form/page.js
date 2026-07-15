@@ -26,11 +26,19 @@ export default function Form() {
     }
 
     //Steps
-    function handleSteps(e) {
+    function nextStep(e) {
         e.preventDefault();
 
         if (step < 2) {
             setStep(prev => prev + 1);
+        }
+    }
+
+    function prevStep(e) {
+        e.preventDefault();
+
+        if (step > 1) {
+            setStep(prev => prev - 1);
         }
     }
 
@@ -49,18 +57,18 @@ export default function Form() {
 
     return (
         <main className={styles.main}>
-            <form className={`wrapper`}>
+            <form  onSubmit={nextStep} className={`wrapper`}>
 
                 {step === 1 && (
                     <fieldset className={styles.date}>
                         <legend>Pick a date and time!</legend>
                         <label>
                             Date
-                            <input type="date" name="date" onChange={handleChange}/>
+                            <input type="date" name="date" onChange={handleChange} required/>
                         </label>
                         <label>
                             Time
-                            <input type="time" name="time" onChange={handleChange}/>
+                            <input type="time" name="time" onChange={handleChange} required/>
                         </label>
                     </fieldset>
                 )}
@@ -99,15 +107,18 @@ export default function Form() {
                         <fieldset className={`${styles.myOwn}`}>
                             <legend>Or</legend>
                             <button>Random 🎪</button>
-                            <button>My own idea 💡</button>
+
+                            <label>
+                                <input type="text" placeholder="My own idea 💡"/>
+                            </label>
                         </fieldset>
                     </>
                 )}
 
 
-                <button onClick={handleSteps} className={`button-1 ${styles.button1}`}>Continue</button>
+                <button className={`button-1 ${styles.button1}`}>Continue</button>
             </form>
-            {/* <button className="back-btn"></button> */}
+            <button className="back-btn" onClick={prevStep}></button>
         </main>
     )
 }

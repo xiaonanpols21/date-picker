@@ -55,7 +55,7 @@
         }
 
         .myOwn {
-            @include flex(column, 10px);
+            @include flex(column, 20px);
 
             legend {
                 @include f24;
@@ -75,6 +75,18 @@
                 @include f16;
                 width: 100%;
                 font-family: var(--font-poppins);
+            }
+
+            label {
+                @include flex(column, 10px);
+            }
+
+            input[type='text'] {
+                @include tags;
+                @include f16;
+                width: 100%;
+                font-family: var(--font-poppins);
+                text-align: center;
             }
         }
     }
