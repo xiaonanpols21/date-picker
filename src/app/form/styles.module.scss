@@ -30,6 +30,14 @@
             }
         }
 
+        // If checkbox is checked, remove styling from input type text: My own idea
+        &:has(.activity label input:checked) {
+            .myOwn input[type='text'] {
+                border: 1px solid $primaire;
+                font-weight: normal;
+            }
+        }
+
         .activity {
             @include flex(flex, 10px);
             flex-wrap: wrap;
@@ -38,8 +46,7 @@
                 @include tags;
 
                 &:has(input:checked) {
-                    border: 3px solid $primaire;
-                    font-weight: bold;
+                    @include active;
                 }
 
                 input {
@@ -87,6 +94,10 @@
                 width: 100%;
                 font-family: var(--font-poppins);
                 text-align: center;
+            }
+
+            input[type='text'].active {
+                @include active;
             }
         }
     }

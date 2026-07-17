@@ -7,7 +7,8 @@ export default function Form() {
     const [form, setForm] = useState({
         date: "",
         time: "",
-        activity: ""
+        activity: "",
+        customActivity: ""
     });
     const [step, setStep] = useState(1);
 
@@ -48,7 +49,18 @@ export default function Form() {
 
         setForm(prev => ({
             ...prev,
-            activity: prev.activity === value ? "" : value
+            activity: prev.activity === value ? "" : value,
+            customActivity: ""
+        }));
+    }
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+
+        setForm(prev => ({
+            ...prev,
+            [name]: value,
+            ...(name === "customActivity" && { activity: "" })
         }));
     }
 
@@ -57,7 +69,7 @@ export default function Form() {
 
     return (
         <main className={styles.main}>
-            <form  onSubmit={nextStep} className={`wrapper`}>
+            <form onSubmit={nextStep} className={`wrapper`}>
 
                 {step === 1 && (
                     <fieldset className={styles.date}>
@@ -109,7 +121,7 @@ export default function Form() {
                             <button>Random 🎪</button>
 
                             <label>
-                                <input type="text" placeholder="My own idea 💡"/>
+                                <input value={form.customActivity} onChange={handleChange} name="customActivity" type="text" placeholder="My own idea 💡"  className={form.customActivity ? styles.active : null}/>
                             </label>
                         </fieldset>
                     </>

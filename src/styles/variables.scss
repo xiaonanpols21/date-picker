@@ -70,3 +70,8 @@ $black: #000;
     border-radius: 10px;
     background-color: $white;
 }
+
+@mixin active {
+    border: 3px solid $primaire;
+    font-weight: bold;
+}
