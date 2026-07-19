@@ -14,8 +14,18 @@ export default function Form() {
 
     //LocalStorage
     useEffect(() => {
+        const savedForm = localStorage.getItem("form");
+
+        if (savedForm) {
+            setForm(JSON.parse(savedForm));
+        }
+    }, []);
+
+    useEffect(() => {
         localStorage.setItem("form", JSON.stringify(form));
     }, [form]);
+
+
 
     function handleChange(e) {
         const { name, value } = e.target;
