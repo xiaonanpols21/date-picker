@@ -18,12 +18,6 @@ export default function Dialog({toggleDialog}) {
         }
     }
 
-    function closeModal() {
-        if (dialogRef.current) {
-            dialogRef.current.close();
-        }
-    }
-
     return (
         <>
             <dialog ref={dialogRef}>

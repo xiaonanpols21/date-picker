@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Random from "@/components/random";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 
@@ -13,8 +14,9 @@ export default function Form() {
     });
     const [step, setStep] = useState(1);
     const [excitement, setExcitement] = useState(0);
+    const [showDialog, setShowDialog] = useState(false);
 
-    //LocalStorage
+    // LocalStorage
     useEffect(() => {
         const savedForm = localStorage.getItem("form");
 
@@ -27,8 +29,6 @@ export default function Form() {
         localStorage.setItem("form", JSON.stringify(form));
     }, [form]);
 
-
-
     function handleChange(e) {
         const { name, value } = e.target;
 
@@ -38,7 +38,7 @@ export default function Form() {
         }));
     }
 
-    //Steps
+    // Steps
     function nextStep(e) {
         e.preventDefault();
 
@@ -55,7 +55,7 @@ export default function Form() {
         }
     }
 
-    //Activty
+    // Activty
     function handleActivity(e) {
         const value = e.target.value;
 
@@ -76,6 +76,13 @@ export default function Form() {
         }));
     }
 
+    // Random
+    function toggle(e) {
+        e.preventDefault();
+        setShowDialog(prev => !prev);
+    }
+
+    // Excitement
     const images = [
         "/img/gif/0.gif",
         "/img/gif/1.gif",
@@ -88,7 +95,6 @@ export default function Form() {
     function handleExcitement(e) {
         setExcitement(Number(e.target.value));
     }
-
 
     return (
         <main className={styles.main}>
@@ -141,7 +147,9 @@ export default function Form() {
 
                         <fieldset className={`${styles.myOwn}`}>
                             <legend>Or</legend>
-                            <button>Random 🎪</button>
+                            <button onClick={toggle}>Random 🎪</button>
+
+                            {showDialog && <Random/>}
 
                             <label>
                                 <input value={form.customActivity} onChange={handleChange} name="customActivity" type="text" placeholder="My own idea 💡"  className={form.customActivity ? styles.active : null}/>
