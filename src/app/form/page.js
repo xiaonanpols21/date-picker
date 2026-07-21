@@ -74,9 +74,6 @@ export default function Form() {
         }));
     }
 
-
-
-
     return (
         <main className={styles.main}>
             <form onSubmit={nextStep} className={`wrapper`}>
@@ -86,11 +83,11 @@ export default function Form() {
                         <legend>Pick a date and time!</legend>
                         <label>
                             Date
-                            <input type="date" name="date" onChange={handleChange} required/>
+                            <input type="date" name="date" value={form.date} onChange={handleChange} required/>
                         </label>
                         <label>
                             Time
-                            <input type="time" name="time" onChange={handleChange} required/>
+                            <input type="time" name="time" value={form.time} onChange={handleChange} required/>
                         </label>
                     </fieldset>
                 )}
