@@ -56,6 +56,16 @@
             }
         }
 
+        .excitement {
+            legend {
+                margin-bottom: 10px;
+
+                &::after {
+                    display: none;
+                }
+            }
+        }
+
 
         .button1 {
             margin-top: 40px;

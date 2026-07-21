@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import styles from "./styles.module.scss";
 
 export default function Form() {
@@ -11,6 +12,7 @@ export default function Form() {
         customActivity: ""
     });
     const [step, setStep] = useState(1);
+    const [excitement, setExcitement] = useState(0);
 
     //LocalStorage
     useEffect(() => {
@@ -40,7 +42,7 @@ export default function Form() {
     function nextStep(e) {
         e.preventDefault();
 
-        if (step < 2) {
+        if (step < 3) {
             setStep(prev => prev + 1);
         }
     }
@@ -73,6 +75,20 @@ export default function Form() {
             ...(name === "customActivity" && { activity: "" })
         }));
     }
+
+    const images = [
+        "/img/gif/0.gif",
+        "/img/gif/1.gif",
+        "/img/gif/2.gif",
+        "/img/gif/3.gif",
+        "/img/gif/4.gif",
+        "/img/gif/5.gif"
+    ];
+
+    function handleExcitement(e) {
+        setExcitement(Number(e.target.value));
+    }
+
 
     return (
         <main className={styles.main}>
@@ -132,6 +148,28 @@ export default function Form() {
                             </label>
                         </fieldset>
                     </>
+                )}
+
+                {step === 3 && (
+                    <fieldset className={styles.excitement}>
+                        <div className="title-content">
+                            <legend>How excited are you?</legend>
+                            <p>Rate your excitement!</p>
+                        </div>
+
+                           <Image
+                                src={images[excitement]}
+                                width={200}
+                                height={200}
+                                alt="Excitement level"
+                            />
+
+                        <label>
+                            <span className="visually-hidden">Excitement</span>
+                            <input type="range" name="excitement" min="0" max="5" onChange={handleExcitement}/>
+                        </label>
+                        
+                    </fieldset>
                 )}
 
 
