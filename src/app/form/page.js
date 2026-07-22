@@ -11,7 +11,8 @@ export default function Form() {
         time: "",
         activity: "",
         customActivity: "",
-        randomActivity: ""
+        randomActivity: "",
+        excitement: 0
     });
     const [step, setStep] = useState(1);
     const [excitement, setExcitement] = useState(0);
@@ -104,7 +105,7 @@ export default function Form() {
     ];
 
     function handleExcitement(e) {
-        setExcitement(Number(e.target.value));
+        setForm(prev => ({...prev, excitement: Number(e.target.value)}));
     }
 
     return (
@@ -177,7 +178,7 @@ export default function Form() {
                         </div>
 
                            <Image
-                                src={images[excitement]}
+                                src={images[form.excitement]}
                                 width={200}
                                 height={200}
                                 alt="Excitement level"
@@ -185,12 +186,16 @@ export default function Form() {
 
                         <label>
                             <span className="visually-hidden">Excitement</span>
-                            <input type="range" name="excitement" min="0" max="5" onChange={handleExcitement}/>
+                            <input type="range" name="excitement" min="0" max="5" onChange={handleExcitement} value={form.excitement}/>
                         </label>
+                        <div className={styles.rangeValues}>
+                            <p>Meh</p>
+                            <p>Yay!</p>
+                        </div>
+                        <p className={styles.result}>Your excitement: <span>{form.excitement}/5</span></p>
                         
                     </fieldset>
                 )}
-
 
                 <button className={`button-1 ${styles.button1}`}>Continue</button>
             </form>

@@ -57,11 +57,32 @@
         }
 
         .excitement {
+            @include flex(column, 20px);
+
             legend {
                 margin-bottom: 10px;
 
                 &::after {
                     display: none;
+                }
+            }
+
+            input[type="range"] {
+                accent-color: $primaire;
+                width: 100%;
+            }
+
+            .rangeValues {
+                @include flex(row, 0px);
+                margin-top: -20px;
+                justify-content: space-between;
+            }
+
+            .result {
+                text-align: center;
+
+                span {
+                    font-weight: bold;
                 }
             }
         }
