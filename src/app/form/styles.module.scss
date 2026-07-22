@@ -87,11 +87,15 @@
                 }
             }
 
-            button {
+            > button {
                 @include tags;
                 @include f16;
                 width: 100%;
                 font-family: var(--font-poppins);
+            }
+
+            > button.active {
+                @include active;
             }
 
             label {

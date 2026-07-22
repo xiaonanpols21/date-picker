@@ -1,0 +1,16 @@
+@use "../../styles/variables" as *;
+
+.dialog {
+    padding: 0px;
+
+    p {
+        width: fit-content;
+        padding: 10px 20px;
+        margin: auto;
+        text-align: center;
+        font-weight: bold;
+        background-color: $secundaire;
+        border: 1px solid $primaire;
+        border-radius: 20px;
+    }
+}

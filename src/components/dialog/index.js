@@ -1,16 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+
+import { useState } from "react";
+import useDialog from "@/hooks/useDialog";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 
 export default function Dialog({toggleDialog}) {
-    const dialogRef = useRef(null);
+    const dialogRef = useDialog();
     const [step, setStep] = useState(1);
-
-    useEffect(() => {
-        if (dialogRef.current) {
-            dialogRef.current.showModal();
-        }
-    }, []);
 
     function handleYes() {
         if (step < 4) {

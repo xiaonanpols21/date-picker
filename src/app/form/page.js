@@ -10,7 +10,8 @@ export default function Form() {
         date: "",
         time: "",
         activity: "",
-        customActivity: ""
+        customActivity: "",
+        randomActivity: ""
     });
     const [step, setStep] = useState(1);
     const [excitement, setExcitement] = useState(0);
@@ -62,7 +63,8 @@ export default function Form() {
         setForm(prev => ({
             ...prev,
             activity: prev.activity === value ? "" : value,
-            customActivity: ""
+            customActivity: "",
+            randomActivity: ""
         }));
     }
 
@@ -72,7 +74,7 @@ export default function Form() {
         setForm(prev => ({
             ...prev,
             [name]: value,
-            ...(name === "customActivity" && { activity: "" })
+            ...(name === "customActivity" && { activity: "", randomActivity: "" })
         }));
     }
 
@@ -80,6 +82,15 @@ export default function Form() {
     function toggle(e) {
         e.preventDefault();
         setShowDialog(prev => !prev);
+    }
+
+    function handleRandomActivity(activity) {
+        setForm(prev => ({
+            ...prev,
+            randomActivity: activity,
+            activity: "",
+            customActivity: ""
+        }));
     }
 
     // Excitement
@@ -147,12 +158,12 @@ export default function Form() {
 
                         <fieldset className={`${styles.myOwn}`}>
                             <legend>Or</legend>
-                            <button onClick={toggle}>Random 🎪</button>
+                            <button onClick={toggle} className={form.randomActivity ? styles.active : null}>{form.randomActivity ? form.randomActivity : "Random 🎪"}</button>
 
-                            {showDialog && <Random/>}
+                            {showDialog && <Random toggle={toggle} onChange={handleChange} onRandomActivity={handleRandomActivity}/>}
 
                             <label>
-                                <input value={form.customActivity} onChange={handleChange} name="customActivity" type="text" placeholder="My own idea 💡"  className={form.customActivity ? styles.active : null}/>
+                                <input value={form.customActivity} onChange={handleChange} name="customActivity" type="text" placeholder="My own idea 💡" className={form.customActivity ? styles.active : null}/>
                             </label>
                         </fieldset>
                     </>
