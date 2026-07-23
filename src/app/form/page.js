@@ -197,7 +197,8 @@ export default function Form() {
                     </fieldset>
                 )}
 
-                <button className={`button-1 ${styles.button1}`}>Continue</button>
+                {step === 3 ? <a className="button-1" href="/confirm">Continue</a> : <button className={`button-1 ${styles.button1}`}>Continue</button>}
+                
             </form>
             <button className="back-btn" onClick={prevStep}></button>
         </main>

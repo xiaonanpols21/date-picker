@@ -58,7 +58,6 @@ export default function Dialog({toggleDialog}) {
                         <h2>Yay!</h2>
                         <div className="title-content">
                             <p>I'm glad you said yes!</p>
-                            <p>(After asking 3 times 😡)</p>
                         </div>
                         <h3>We gonna have so much fun!</h3>
                         <Image
