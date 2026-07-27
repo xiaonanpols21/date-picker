@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 
@@ -20,6 +21,32 @@ export default function Confirm() {
     form.activity ||
     form.randomActivity ||
     form.customActivity;
+
+    function sendEmail() {
+        emailjs.send(
+            "service_dm3spsb",
+            "template_b3f3xjj",
+            {
+                date: form.date,
+                time: form.time,
+                activity:
+                    form.activity ||
+                    form.customActivity ||
+                    form.randomActivity,
+                excitement: form.excitement,
+            },
+            "z3oefhlRVg3G_b-GO"
+        )
+        .then(() => {
+            window.location.href = "/thanks";
+        })
+        .catch((error) => {
+            console.log(error);
+            console.log(error.text);
+            console.log(error.status);
+        });
+    }
+
 
     return (
         <section className={styles.confirm}>
@@ -73,7 +100,7 @@ export default function Confirm() {
                 </ul>
              
                 <div className="buttons">
-                    <button className="button-1">Confirm</button>
+                    <button className="button-1" onClick={sendEmail}>Confirm</button>
                 </div>
             </div>
         </section>
